@@ -1,12 +1,7 @@
 ﻿<h1 ng-bind="title"></h1>
-<div class="col-md-2">
-    <label>Search by Author:</label>
-    <input type="text" class="form-control" ng-model="filters.author" ng-model-options="{ debounce: 250 }" ng-change="search()" placeholder="author">
-</div>
-<div class="col-md-2">
-    <label>Search by title:</label>
-    <input type="text" class="form-control" ng-model="filters.title" ng-model-options="{ debounce: 250 }" ng-change="search()" placeholder="post title">
-</div>
+
+  <button data-toggle="modal" data-target="#addNewsModal" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Add News</button>
+  
 
 <div class="col-md-12">
     <div class="col-md-4" ng-repeat="post in posts track by $index">
@@ -19,3 +14,5 @@
         <button ng-click="deleteNews(post)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
     </div>
 </div>
+
+<div ng-include="'Views/Partials/AddNewsModal.html'"></div>

@@ -1,13 +1,18 @@
 ﻿/// <reference path="../angular.js" />
 
-angular.module("mainModule")
+angular.module("newsBlogModule")
     .config([
         "$routeProvider",
         "$locationProvider",
+        "$httpProvider",
 
-        function($routeProvider, $locationProvider) {
+        function($routeProvider, $locationProvider, $httpProvider) {
             $locationProvider.html5Mode(true);
-
+            $httpProvider.defaults.headers.common = {};
+            $httpProvider.defaults.headers.post = {};
+            $httpProvider.defaults.headers.put = {};
+            $httpProvider.defaults.headers.patch = {};
+            $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
             $routeProvider
                 .when("/",
                 {
@@ -17,13 +22,16 @@ angular.module("mainModule")
                     activeTab: 'Home'
 
                 })
-                .when("/About",
+                .when("/News",
                 {
-                    templateUrl: "Views/About.html",
-                    controller: "AboutController",
+                    templateUrl: "Views/News.html",
+                    controller: "NewsController",
                     caseInsensitiveMatch: true,
-                    activeTab:'About'
+                    activeTab:'News'
                 
+                })
+                .otherwise({
+                    redirectTo: '/'
                 });
 
 
